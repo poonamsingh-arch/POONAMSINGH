@@ -208,7 +208,30 @@ document.getElementById("contactForm").addEventListener("submit", async function
     const data = await response.json();
     document.getElementById("responseMessage").innerText = data.message;
 });
+</script><script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    fetch("http://127.0.0.1:5004/contact", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(error => console.error("Error:", error));
+});
 </script>
+
+    
     
     
 
