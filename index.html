@@ -195,9 +195,9 @@ form button:hover {
 document.querySelector("form").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const name = document.querySelector("input[name='name']").value;
-    const email = document.querySelector("input[name='email']").value;
-    const message = document.querySelector("textarea[name='message']").value;
+    const name = document.querySelector("input[name='poonam singh']").value;
+    const email = document.querySelector("input[name='poonams58589@gmail.com']").value;
+    const message = document.querySelector("textarea[name='good']").value;
 
     const response = await fetch("http://localhost:3000/contact", {
         method: "POST",
