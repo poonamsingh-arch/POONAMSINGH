@@ -170,67 +170,47 @@ form button:hover {
     <p>LinkedIn: https://linkedin.com/in/yourprofile</p>
 </section> 
 
+<!-- CONTACT SECTION -->
 <section id="contact">
   <h2>Contact Me</h2>
-  
-  <form id="contactForm">
-    <input type="text" id="name" placeholder="Your Name" required><br><br>
-    <input type="email" id="email" placeholder="Your Email" required><br><br>
-    <textarea id="message" placeholder="Your Message" required></textarea><br><br>
+
+  <form>
+    <input type="text" name="name" placeholder="poonam singh" required>
+
+    <input type="email" name="email" placeholder="poonams58589@gmail.com" required>
+
+    <textarea name="message" placeholder="always eager to learn more and more" required></textarea>
+
     <button type="submit">Send Message</button>
   </form>
-
-  <p id="responseMessage"></p>
 </section>
 
 <footer>
     © 2026 Poonam Singh | All Rights Reserved
-</footer><script>
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
+</footer>
+
+    
+    
+<script>
+document.querySelector("form").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
+    const name = document.querySelector("input[name='name']").value;
+    const email = document.querySelector("input[name='email']").value;
+    const message = document.querySelector("textarea[name='message']").value;
 
-    const response = await fetch("http://127.0.0.1:5004/contact", {
+    const response = await fetch("http://localhost:3000/contact", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            name: name,
-            email: email,
-            message: message
-        })
+        body: JSON.stringify({ name, email, message })
     });
 
     const data = await response.json();
-    document.getElementById("responseMessage").innerText = data.message;
-});
-</script><script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    fetch("http://127.0.0.1:5004/contact", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            message: document.getElementById("message").value
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert(data.message);
-    })
-    .catch(error => console.error("Error:", error));
+    alert(data.message);
 });
 </script>
-
     
     
     
