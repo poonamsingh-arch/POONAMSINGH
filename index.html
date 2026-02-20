@@ -172,16 +172,24 @@ form button:hover {
 
 <!-- CONTACT SECTION -->
 <section id="contact">
-  <h2>Contact Me</h2>
+
+
+
+<h1>Contact Me</h1>
 
   <form id="contactForm">
-    <input type="text" id="name" placeholder="poonam singh" required><br><br>
-    <input type="email" id="email" placeholder="poonams58589@gmail.com" required><br><br>
-    <textarea id="message" placeholder="eager to learn" required></textarea><br><br>
+    <input type="text" id="name" placeholder="Your Name" required><br><br>
+    <input type="email" id="email" placeholder="Your Email" required><br><br>
+    <textarea id="message" placeholder="Your Message" required></textarea><br><br>
+
     <button type="submit">Send</button>
   </form>
 
   <p id="responseMessage"></p>
+
+
+
+    
 </section>
 
     
@@ -193,35 +201,40 @@ form button:hover {
     
     
 
-    <script>
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
 
-  const name = document.getElementById("poonam singh").value;
-  const email = document.getElementById("poonams58589@gmail.com").value;
-  const message = document.getElementById("eager to learn").value;
+ <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  fetch("http://localhost:3000/send-message", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      message: message
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    document.getElementById("responseMessage").innerText = data.message;
-    document.getElementById("contactForm").reset();
-  })
-  .catch(error => {
-    document.getElementById("responseMessage").innerText = "Error sending message.";
-  });
-});
-</script>    
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      fetch("http://localhost:3000/send-message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("responseMessage").innerText = data.message;
+        document.getElementById("contactForm").reset();
+      })
+      .catch(error => {
+        document.getElementById("responseMessage").innerText = "Error sending message.";
+      });
+    });
+  </script>
+
+
+
+
     
     
 
