@@ -174,16 +174,17 @@ form button:hover {
 <section id="contact">
   <h2>Contact Me</h2>
 
-  <form>
-    <input type="text" name="name" placeholder="poonam singh" required>
-
-    <input type="email" name="email" placeholder="poonams58589@gmail.com" required>
-
-    <textarea name="message" placeholder="always eager to learn more and more" required></textarea>
-
-    <button type="submit">Send Message</button>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="poonam singh" required><br><br>
+    <input type="email" id="email" placeholder="poonams58589@gmail.com" required><br><br>
+    <textarea id="message" placeholder="eager to learn" required></textarea><br><br>
+    <button type="submit">Send</button>
   </form>
+
+  <p id="responseMessage"></p>
 </section>
+
+    
 
 <footer>
     © 2026 Poonam Singh | All Rights Reserved
@@ -192,25 +193,35 @@ form button:hover {
     
     
 <script>
-document.querySelector("form").addEventListener("submit", async function(e) {
-    e.preventDefault();
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-    const name = document.querySelector("input[name='poonam singh']").value;
-    const email = document.querySelector("input[name='poonams58589@gmail.com']").value;
-    const message = document.querySelector("textarea[name='good']").value;
+  const name = document.getElementById("poonam singh").value;
+  const email = document.getElementById("poonams58589@gmail.com").value;
+  const message = document.getElementById("eager to learn").value;
 
-    const response = await fetch("http://localhost:3000/contact", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name, email, message })
-    });
-
-    const data = await response.json();
-    alert(data.message);
+  fetch("http://localhost:3000/send-message", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      email: email,
+      message: message
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("responseMessage").innerText = data.message;
+    document.getElementById("contactForm").reset();
+  })
+  .catch(error => {
+    document.getElementById("responseMessage").innerText = "Error sending message.";
+  });
 });
 </script>
+    
     
     
     
