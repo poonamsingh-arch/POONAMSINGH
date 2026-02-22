@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Poonam Singh | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+        }
+
+        header img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        section {
+            padding: 30px;
+            margin: 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 12px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #00ffff;
+            padding-bottom: 8px;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: black;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #00ffff;
+            color: black;
+            border-radius: 5px;
+            margin-top: 10px;
+        }form {
+    max-width: 500px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+
+form button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #00ffff;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background-color: white;
+}
+        
+    </style>
+</head> 
+
+
+<body>
+
+<header>
+    <img src="profile.jpg" alt="Poonam Singh">
+    <h1>Poonam Singh</h1>
+    <p>BCA Student | Cloud Computing | Frontend Developer</p>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p>
+        I am Poonam Singh, currently pursuing BCA in Cloud Computing at Kristu Jayanti University.
+        I am passionate about Artificial Intelligence, Machine Learning, Cyber Security and Web Development.
+        I aim to build innovative solutions and grow as a skilled software developer.
+    </p>
+</section>
+
+<section>
+    <h2>Technical Skills</h2>
+    <ul>
+        <li>C Programming</li>
+        <li>C++</li>
+        <li>Python</li>
+        <li>Data Structures</li>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Frontend Development</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Certifications</h2>
+    <ul>
+        <li>
+            
+        </li>
+        <li>
+            Microsoft Learn – Cyber Security Concepts (Sep 2025)
+            <a href="cybersecurity.pdf" target="_blank">View</a>
+        </li>
+        <li>
+            AWS Academy Graduate – Generative AI Foundations (12 Hours – Oct 2025)
+            <a href="ai.pdf" target="_blank">View</a>     
+        </li>
+        
+    </ul>
+
+    <p><strong>Note:</strong> </p>
+</section>
+
+<section>
+    <h2>Projects</h2>
+    <ul>
+        <li>
+            <strong>Instagram Clone</strong> – Developed a frontend Instagram UI clone using HTML, CSS and JavaScript.
+        </li>
+        <li>
+            <strong>Expense Tracker (Python)</strong> – Created a Python-based application to manage daily expenses and track spending.
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>Achievements</h2>
+    <ul>
+        <li>AWS Academy Graduate – Cloud Foundations Badge</li>
+        <li>AWS Generative AI Foundations Badge</li>
+        <li>Microsoft Cyber Security Learning Achievement</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Connect With Me</h2>
+    <p>Email: poonams58589@gmail.com</p>
+    <p>GitHub: https://github.com/poonamsingh-arche</p>
+    <p>LinkedIn: https://linkedin.com/in/yourprofile</p>
+</section> 
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+
+
+
+<h1>Contact Me</h1>
+
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required><br><br>
+    <input type="email" id="email" placeholder="Your Email" required><br><br>
+    <textarea id="message" placeholder="Your Message" required></textarea><br><br>
+
+    <button type="submit">Send</button>
+  </form>
+
+  <p id="responseMessage"></p>
+
+
+
+    
+</section>
+
+    
+
+<footer>
+    © 2026 Poonam Singh | All Rights Reserved
+</footer>
+
+    
+    
+
+
+ <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      
+fetch("https://portfolio-backend-tmee.onrender.com/contact", {
+
+
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("responseMessage").innerText = data.message;
+        document.getElementById("contactForm").reset();
+      })
+      .catch(error => {
+        document.getElementById("responseMessage").innerText = "Error sending message.";
+      });
+    });
+  </script>
+
+
+
+
+    
+    
+
+</body>
+</html>
