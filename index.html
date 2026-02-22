@@ -208,9 +208,10 @@ form button:hover {
 
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
+      const message = document.getElementById("message").valuue;
 
-fetch("https://portfolio-backend-tmee.onrender.com/contact", {
+
+      fetch("https://portfolio-backend-tmee.onrender.com/api/contact", {
 
         
         method: "POST",
